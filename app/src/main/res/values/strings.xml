@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Doge Surch</string>
+    <string name="title_activity_map">Map</string>
+    <string name="auth_failed">Authentication failed.</string>
+</resources>
