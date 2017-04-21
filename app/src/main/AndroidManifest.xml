@@ -38,12 +38,11 @@
         <activity
             android:name=".MapScreen"
             android:label="@string/title_activity_map"
-            android:parentActivityName=".MainActivity"  />
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LoginScreen"
             android:parentActivityName=".MainActivity" />
-
+        <activity android:name=".SearchesScreen"></activity>
     </application>
 
 </manifest>

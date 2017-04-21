@@ -28,6 +28,13 @@
             android:text="login" />
 
         <Button
+            android:id="@+id/bSearches"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Searches" />
+
+        <Button
             android:id="@+id/bMapScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,25 +43,22 @@
             android:text="map" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/bChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Chat" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:text="Currently logged in:"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.504" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/currentUser"
@@ -64,7 +68,6 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:text="Null"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintLeft_toRightOf="@+id/textView2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
