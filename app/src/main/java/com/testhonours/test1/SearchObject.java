@@ -5,32 +5,33 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class SearchObject {
 
-    private String searchAuthor;
+    private FirebaseUser author;
     private Calendar dateAdded;
     private DogObject dog;
     private List<FirebaseUser> userList;
     private ArrayList<Marker> markerList;
 
     public SearchObject(){
-        this.dateAdded=Calendar.getInstance();
     }
 
-    public void setAuthor(String input){
-        this.searchAuthor=input;
+    public void setAuthor(FirebaseUser input){
+        this.author =input;
     }
-    public String getAuthor(){
-        return searchAuthor;
+    public FirebaseUser getAuthor(){
+        return author;
     }
     public void setDog(DogObject input){
         this.dog=input;
     }
     public DogObject getDog (){
         return dog;
+    }
+    public void setDateAdded(){
+        this.dateAdded=Calendar.getInstance();
     }
     public Calendar getDateAdded(){
         return dateAdded;

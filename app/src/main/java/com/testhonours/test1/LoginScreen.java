@@ -59,7 +59,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         });
     }
     private void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
             return;
         }

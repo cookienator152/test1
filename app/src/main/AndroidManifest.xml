@@ -42,7 +42,8 @@
         <activity
             android:name=".LoginScreen"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".SearchesScreen"></activity>
+        <activity android:name=".SearchesScreen" />
+        <activity android:name=".AddSearchScreen"></activity>
     </application>
 
 </manifest>
