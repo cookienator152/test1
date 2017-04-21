@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class SearchObject {
@@ -15,8 +16,8 @@ public class SearchObject {
     private List<FirebaseUser> userList;
     private ArrayList<Marker> markerList;
 
-    public SearchObject(){
-    }
+    public SearchObject(){}
+
 
     public void setAuthor(FirebaseUser input){
         this.author =input;
@@ -30,22 +31,18 @@ public class SearchObject {
     public DogObject getDog (){
         return dog;
     }
-    public void setDateAdded(){
-        this.dateAdded=Calendar.getInstance();
-    }
+    public void setDateAdded(){this.dateAdded= Calendar.getInstance();}
     public Calendar getDateAdded(){
         return dateAdded;
     }
-    public void addUser (FirebaseUser user){
-        this.userList.add(user);
-    }
+    public void setUserList(FirebaseUser user){this.userList.add(user);}
     public List<FirebaseUser> getUserList (){
         return userList;
     }
-    public void addMarker(Marker marker){
+    public void setMarkerList(Marker marker){
         this.markerList.add(marker);
     }
-    public ArrayList<Marker> getMarkers(){
+    public ArrayList<Marker> getMarkerList(){
         return markerList;
     }
 }
