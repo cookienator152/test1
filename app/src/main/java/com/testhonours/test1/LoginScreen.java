@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginScreen extends AppCompatActivity implements View.OnClickListener{
     private FirebaseAuth mAuth;
-    //private FirebaseAuth.AuthStateListener mAuthListener;
     private EditText mEmailField;
     private EditText mPasswordField;
     private static final String TAG = "login system";
@@ -40,7 +39,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     }
 
     private void createAccount(String email, String password) {
-        Log.d(TAG, "createAccount:" + email);
+        Log.e(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
         }
@@ -48,13 +47,13 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onComplete(@NonNull Task<AuthResult> task){
                 if (task.isSuccessful()){
-                    Log.d(TAG, "createUserWithEmail:success");
+                    Log.e(TAG, "createUserWithEmail:success");
                     FirebaseUser currentUser = mAuth.getCurrentUser();
                     Toast.makeText(LoginScreen.this, "Register successful.",Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else {
-                    Toast.makeText(LoginScreen.this, "Register failed.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginScreen.this, "Register failed."+task.getException().getLocalizedMessage(),Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -70,11 +69,12 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                 if (task.isSuccessful()){
                     Log.d(TAG, "signInWithEmail:success");
                     FirebaseUser currentUser = mAuth.getCurrentUser();
+                    Log.e(TAG, currentUser.getEmail());
                     Toast.makeText(LoginScreen.this, "Sign in successful.",Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else {
-                    Log.w(TAG, "signInWithEmail:failed", task.getException());
+                    Log.e(TAG, "signInWithEmail:failed");
                     Toast.makeText(LoginScreen.this, R.string.auth_failed,Toast.LENGTH_SHORT).show();
                 }
             }
@@ -107,8 +107,14 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
         int i = v.getId();
         if (i == R.id.bRegister) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.bLogIn) {
+        }
+        else if (i == R.id.bLogIn) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+        }
+        else if (i== R.id.bLogOut){
+            mAuth.signOut();
+            Toast.makeText(LoginScreen.this, "Logged out.",Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }
