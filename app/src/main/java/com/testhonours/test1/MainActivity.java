@@ -1,10 +1,8 @@
 package com.testhonours.test1;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     public List<SearchObject> searches;
     private FirebaseAuth mAuth;
     private TextView mStatus;
-    //private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         FirebaseUser mCurrentUser = mAuth.getCurrentUser();
         mStatus = (TextView) findViewById(R.id.currentUser);
-        //mAuth.addAuthStateListener(mAuthListener);
         if (mCurrentUser != null) {
             mStatus.setText(mCurrentUser.getEmail());
         } else {
@@ -55,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
             }
             case R.id.bMapScreen:{
                 Intent intent = new Intent(this, MapScreen.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.bSearches:{
+                Intent intent = new Intent(this, SearchesScreen.class);
                 startActivity(intent);
                 break;
             }

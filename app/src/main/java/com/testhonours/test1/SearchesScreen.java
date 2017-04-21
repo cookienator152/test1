@@ -1,7 +1,9 @@
 package com.testhonours.test1;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,6 +22,11 @@ public class SearchesScreen extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         DatabaseReference dbRefSearches = mDatabase.getReference("searches");
+
+    }
+    public void newSearch(View v){
+        Intent intent = new Intent (this, AddSearchScreen.class);
+        startActivity(intent);
 
     }
 

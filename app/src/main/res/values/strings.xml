@@ -2,4 +2,7 @@
     <string name="app_name">Doge Surch</string>
     <string name="title_activity_map">Map</string>
     <string name="auth_failed">Authentication failed.</string>
+    <string name="desc1">Description of behaviour 1</string>
+    <string name="desc2">Description of behaviour 2</string>
+    <string name="desc3">Description of behaviour 3</string>
 </resources>

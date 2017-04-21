@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/bDogRace" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/mDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -82,6 +82,6 @@
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/mDescription" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,26 +22,49 @@ public class AddSearchScreen extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private EditText mDogName;
     private EditText mDogRace;
+    private String mDogBehaviour;
     private Spinner mBehaviour;
+    private TextView desc;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_search_screen);
-
-        mDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
-        DatabaseReference dbRefSearches = mDatabase.getReference("searches");
+        mDatabase=FirebaseDatabase.getInstance();
+        setup();
+    }
+//        mDatabase = FirebaseDatabase.getInstance();
+    public void setup(){
 
         mDogName = (EditText) findViewById(R.id.bDogName);
         mDogRace = (EditText) findViewById(R.id.bDogRace);
+
         mBehaviour = (Spinner) findViewById(R.id.bBehaviourSpinner);
-        String behaviourChoice;
-        mBehaviour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        desc = (TextView) findViewById(R.id.mDescription);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.behaviours, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mBehaviour.setAdapter(adapter);
+
+        mBehaviour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                behaviourChoice=mBehaviour.getItemAtPosition(position).toString();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Object temp = parent.getSelectedItemId();
+                temp=temp.toString();
+                if (temp=="0"){
+                    desc.setText(R.string.desc1);
+                } else if (temp=="1"){
+                    desc.setText(R.string.desc2);
+                } else if (temp=="2"){
+                    desc.setText(R.string.desc3);
+                }
+                Toast.makeText(AddSearchScreen.this, temp.toString(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(AddSearchScreen.this, "NothingSelected", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -63,6 +89,11 @@ public class AddSearchScreen extends AppCompatActivity {
         currentDog.setName(mDogName.getText().toString());
         currentDog.setRace(mDogRace.getText().toString());
         currentSearch.setDog(currentDog);
+
+        DatabaseReference myRef = mDatabase.getReference();
+        DatabaseReference searchRef = myRef.child("searches");
+        DatabaseReference newRef = searchRef.push();
+        newRef.setValue(currentSearch);
     }
 
     private boolean validateForm() {
