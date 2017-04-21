@@ -14,7 +14,7 @@ public class SearchObject {
     private Calendar dateAdded;
     private DogObject dog;
     private List<FirebaseUser> userList;
-    private ArrayList<Marker> markerList;
+    private List<Marker> markerList;
 
     public SearchObject(){}
 
@@ -42,7 +42,7 @@ public class SearchObject {
     public void setMarkerList(Marker marker){
         this.markerList.add(marker);
     }
-    public ArrayList<Marker> getMarkerList(){
+    public List<Marker> getMarkerList(){
         return markerList;
     }
 }

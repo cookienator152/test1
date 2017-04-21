@@ -37,8 +37,7 @@ public class MapScreen extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng glasgow = new LatLng(-34, 151);
+        LatLng glasgow = new LatLng(55, -4);
         mMap.addMarker(new MarkerOptions().position(glasgow).title("Marker in Glasgow"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(glasgow));
     }

@@ -17,11 +17,12 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchesScreen extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseDatabase mDatabase;
-    private ArrayList<SearchObject> mList;
+    private List<SearchObject> mList;
     private ListView mSearchList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class SearchesScreen extends AppCompatActivity {
         dbSearches.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                Log.e("Count " ,""+snapshot.getChildrenCount());
+                SearchObject temp = snapshot.getChildren().iterator().next().getValue(SearchObject.class);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
